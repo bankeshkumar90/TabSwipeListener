@@ -1,46 +1,31 @@
 package com.cafe;
  
-
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONException;
+ 
 import org.json.JSONObject;
  
- 
-
-import android.app.Activity;
-import android.app.AlertDialog;
+import com.triazine.pulltorefresh.library.PullToRefreshBase;
+import com.triazine.pulltorefresh.library.PullToRefreshScrollView;
+import com.triazine.pulltorefresh.library.PullToRefreshBase.OnRefreshListener;
+  
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.content.Intent; 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
+import android.support.v4.app.Fragment; 
+import android.view.LayoutInflater; 
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
-import android.view.inputmethod.InputMethodManager;
+import android.view.View.OnClickListener; 
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
-  
+import android.widget.ScrollView;
+import android.widget.TextView; 
 public class Deductionsfragment extends Fragment implements OnClickListener {
  
 	private Context context; 
 	 
-	private Intent j ; 
-	private String requestFor = "";
-	private boolean isNetworkavailable;
+	private Intent j ;  
 	//private ServiceProxy sp;
 	public static JSONObject additionalData = null;
 	public ProgressDialog pdialog = null;
@@ -89,8 +74,10 @@ public class Deductionsfragment extends Fragment implements OnClickListener {
 	String deduction_check2 = "";
 	String deduction_check3 = "";
 	String deduction_check4 = "";
-	String deduction_check5 = "";
-	OnFrag2TextChanged sendValue2;
+	String deduction_check5 = ""; 
+
+	PullToRefreshScrollView mPullRefreshScrollView;
+	ScrollView mScrollView;
 	
 	public interface OnFrag2TextChanged{
 		public void onEditText2Changed(String textValue);
@@ -103,6 +90,8 @@ public class Deductionsfragment extends Fragment implements OnClickListener {
     	context = getActivity().getApplicationContext();
     	screen1 = this;
     	rootView = inflater.inflate(R.layout.tab2, container, false);
+    	
+    	pullRefresh(rootView);
         return rootView;
     }
      
@@ -114,19 +103,58 @@ public class Deductionsfragment extends Fragment implements OnClickListener {
 		System.out.println("-------------Starter2");
 		//Toast.makeText(getActivity(), "resume f2", Toast.LENGTH_SHORT).show();
 	}
-	
-    private boolean isNetworkavailable() {
-		ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo activeNetworkInfo = connectivityManager
-				.getActiveNetworkInfo();
-		return activeNetworkInfo != null && activeNetworkInfo.isConnected();
-	}
+	private void pullRefresh(View view)
+	{
+		 mPullRefreshScrollView = (PullToRefreshScrollView)view. findViewById(R.id.pull_refresh_scrollview);
+			mPullRefreshScrollView.setOnRefreshListener(new OnRefreshListener<ScrollView>() {
 
+				@Override
+				public void onRefresh(PullToRefreshBase<ScrollView> refreshView) {
+					new GetDataTask().execute();
+				}
+			});
+	}
 
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		
 	}
-    
+	private class GetDataTask extends AsyncTask<Void, Void, String[]> {
+
+		@Override
+		protected String[] doInBackground(Void... params) {
+			// Simulates a background job.
+			try {
+				 
+				Thread.sleep(500); 
+				try {
+					 
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} catch (InterruptedException e) {
+			}
+			return null;
+		}
+
+		@Override
+		protected void onPostExecute(String[] result) {
+			// Do some stuff here
+
+			// Call onRefreshComplete when the list has been refreshed.
+			mPullRefreshScrollView.onRefreshComplete();
+			try {
+				 
+				//changeExpiredColor();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			super.onPostExecute(result);
+		}
+	}
 }

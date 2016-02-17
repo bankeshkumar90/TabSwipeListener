@@ -20,7 +20,56 @@
              android:background="@color/green"
             android:scrollbars="none" >
 
-              
+             <com.triazine.pulltorefresh.library.PullToRefreshScrollView
+            android:id="@+id/pull_refresh_scrollview"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" >
+
+            <TableLayout
+                android:id="@+id/location_chalk_4_table_view"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" >
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="60dp"
+                    android:background="@color/grey" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Plate/VIN"
+                        android:textColor="#FFF" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Time"
+                        android:textColor="#FFF" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Zone"
+                        android:textColor="#FFF" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="Elapsed"
+                        android:textColor="#FFF" />
+                </TableRow>
+            </TableLayout>
+        </com.triazine.pulltorefresh.library.PullToRefreshScrollView>  
         </ScrollView>
         </RelativeLayout>
          
