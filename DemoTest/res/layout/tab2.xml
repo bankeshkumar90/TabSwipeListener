@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:id="@+id/Top_View1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+          <RelativeLayout
+        android:id="@+id/form_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <ScrollView
+            android:id="@+id/scroll1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             android:background="@color/green"
+            android:scrollbars="none" >
+
+              
+        </ScrollView>
+        </RelativeLayout>
+         
+    </RelativeLayout>
+  
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+       
+    <item android:id="@+id/spinner"
+    android:showAsAction="ifRoom"
+    android:title="Category"
+    android:actionViewClass="android.widget.Spinner"
+     />
+    
+     
+    <item
+        android:id="@+id/share"   
+        android:title="Share"/>
+     <item
+        android:id="@+id/contact"   
+        android:title="Contact Us"/>
+     
+       <item
+        android:id="@+id/terms"   
+        android:title="Terms of Use"/>
+    
+</menu>
